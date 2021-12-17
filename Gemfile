@@ -64,4 +64,4 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'image_processing', '~> 1.2'
 gem 'kaminari'
-gem "mini_magick"
+gem 'mini_magick'
