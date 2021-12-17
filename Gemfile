@@ -58,7 +58,10 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'active_storage_validations'
 gem 'carrierwave'
 gem 'devise'
 gem 'devise-i18n'
+gem 'image_processing', '~> 1.2'
 gem 'kaminari'
+gem "mini_magick"
