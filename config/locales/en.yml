@@ -30,12 +30,17 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  booksapp: Books App
+  dictionary:
+    messages:
+      successfully_created: "%{name_param} was successfully created."
+      successfully_updated: "%{name_param} was successfully updated."
+      successfully_deleted: "%{name_param} was successfully destroyed."
   activerecord:
     models: 
       book: book
     attributes:
       book:
-        booksapp: Books App
         books: Books
         title: Title
         memo: Memo
@@ -47,7 +52,4 @@ en:
         destroy: Delete
         editingbook: Editing Book
         back: Back
-        successfully_created: Book was successfully created.
-        successfully_updated: Book was successfully updated.
-        successfully_deleted: Book was successfully destroyed.
         sure?: Are you sure？
