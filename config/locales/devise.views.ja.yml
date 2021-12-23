@@ -25,9 +25,9 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
-        Postno: 郵便番号
-        Address: 住所
-        Introduction: 自己紹介
+        post_no: 郵便番号
+        address: 住所
+        introduction: 自己紹介
         allusers: ユーザー一覧
         userinfo: ユーザー情報
         LoggedInAs: としてログインしています。
