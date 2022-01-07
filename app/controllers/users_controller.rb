@@ -2,22 +2,22 @@
 
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: %i[followings followers]
+  before_action :set_user, only: %i[show followings followers]
 
   def index
     @users = User.with_attached_avatar.order(:id).page(params[:page])
   end
 
   def show
-    @user = User.find(params[:id])
+    @user
   end
 
   def followings
-    @followings = @user.following_users.page(params[:page])
+    @followings = @user.followed_users.page(params[:page])
   end
 
   def followers
-    @followers = @user.followed_users.page(params[:page])
+    @followers = @user.following_users.page(params[:page])
   end
 
   private
