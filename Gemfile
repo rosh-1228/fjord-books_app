@@ -64,5 +64,3 @@ gem 'devise-i18n'
 gem 'kaminari'
 
 gem 'image_processing', '~> 1.2'
-
-gem 'byebug'
