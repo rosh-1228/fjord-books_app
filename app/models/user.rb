@@ -17,18 +17,18 @@ class User < ApplicationRecord
             dependent: :destroy,
             inverse_of: :following
 
-  has_many :followed_users, through: :follow_relationships, source: :followed
-  has_many :following_users, through: :follow_relationships, source: :following
+  has_many :followed_users, through: :followeds, source: :following
+  has_many :following_users, through: :followings, source: :followed
 
   def following?(other_user)
-    following_users.find_by(followed_id: other_user.id)
+    followed_users.include?(other_user)
   end
 
-  def follow!(other_user)
-    followed_users.create!(followed_id: other_user.id)
+  def follow!(other_user_id)
+    followeds.create!(following_id: other_user_id)
   end
 
   def unfollow!(user)
-    followed_users.find_by(followed_id: other_user.id).destroy
+    followeds.find_by(followed_id: user.followed_id).destroy
   end
 end
