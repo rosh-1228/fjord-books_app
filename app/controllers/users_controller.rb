@@ -13,11 +13,11 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings = @user.followed_users.page(params[:page])
+    @followings = @user.followed_users.page(params[:page]).with_attached_avatar
   end
 
   def followers
-    @followers = @user.following_users.page(params[:page])
+    @followers = @user.following_users.page(params[:page]).with_attached_avatar
   end
 
   private

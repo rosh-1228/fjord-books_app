@@ -3,8 +3,8 @@
 class CreateFollowRelationships < ActiveRecord::Migration[6.1]
   def change
     create_table :follow_relationships do |t|
-      t.integer :following_id
-      t.integer :followed_id
+      t.integer :following_id, null: false
+      t.integer :followed_id, null: false
 
       t.timestamps
     end
