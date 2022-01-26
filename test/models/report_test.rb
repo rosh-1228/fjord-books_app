@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class ReportTest < ActiveSupport::TestCase
 
   setup do
     @user = User.create!(
-      email: "autotest@example.com",
+      email: "autoreporttest@example.com",
       password: 'password'
     )
     @report = @user.reports.create!(title: 'reportテスト_title', content: 'reportテスト_content', user_id: @user.id)
@@ -23,7 +25,7 @@ class ReportTest < ActiveSupport::TestCase
 
   test '日報を書いた本人でないことを確認できること' do
     user2 = User.create!(
-      email: "autotest2@example.com",
+      email: "autoreporttest2@example.com",
       password: 'password'
     )
     assert_not @report.editable?(user2)
