@@ -54,7 +54,7 @@
     <% else %>
       <% @book_comments.each do |comment| %>
       <tr>
-        <td><%= comment[:created_at].to_s(:datetime_jp) %></td>
+        <td><%= l comment[:created_at] %></td>
         <% if comment[:user_name].empty? %>
           <td><%= comment[:email] %></td>
         <% else %>
