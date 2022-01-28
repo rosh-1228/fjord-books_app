@@ -24,7 +24,6 @@
   <div class="field">
     <%= form.label :comment_content %>
     <%= form.hidden_field :commentable_type, value: @comment[:commentable_type] %>
-    <%= form.hidden_field :user_id, value: current_user.id %>
     <%= form.text_area :comment_content, size: '50x5', required: true %>
   </div>
 
