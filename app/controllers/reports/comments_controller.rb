@@ -15,8 +15,8 @@ class Reports::CommentsController < ApplicationController
   end
 
   def edit
-    @report
-    @comment
+    set_report
+    set_comment
   end
 
   def update

@@ -15,8 +15,8 @@ class Books::CommentsController < ApplicationController
   end
 
   def edit
-    @book
-    @comment
+    set_book
+    set_comment
   end
 
   def update

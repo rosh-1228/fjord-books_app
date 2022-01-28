@@ -11,7 +11,7 @@ class ReportsController < ApplicationController
   end
 
   def show
-    set_comments(params)
+    load_comments(params)
     @comment = Comment.new
   end
 
