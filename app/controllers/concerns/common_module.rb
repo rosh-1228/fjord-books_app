@@ -2,8 +2,9 @@
 
 module CommonModule
   extend ActiveSupport::Concern
-  def set_comments
-    @comments = User.joins(:comments).preload(:comments).select('comments.*, users.name, users.email')
+  def set_comments(report_id)
+    report = Report.find(report_id)
+    @comments = report.comments.joins(:user).preload(:user).pluck(:comment_content, :created_at, :name, :user_id,:email)
   end
 
   def collect_model_param
