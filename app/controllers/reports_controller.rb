@@ -11,20 +11,7 @@ class ReportsController < ApplicationController
   end
 
   def show
-    @report_comments = []
-    set_comments(params[:id])
-=begin
-    set_comments(params[:id]).each do |comment|
-      next unless comment.commentable_id == params[:id].to_i && comment.commentable_type == 'Report'
-
-      @report_comments << { id: comment.id,
-                            comment_content: comment.comment_content,
-                            created_at: comment.created_at,
-                            user_name: comment.name,
-                            user_id: comment.user_id,
-                            email: comment.email }
-    end
-=end
+    set_comments(params)
     @comment = Comment.new
   end
 

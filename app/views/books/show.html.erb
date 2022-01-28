@@ -49,21 +49,21 @@
   </thead>
 
   <tbody>
-    <% if @book_comments.empty? %>
+    <% if @comments.empty? %>
       <p>コメントはありません。</p>
     <% else %>
-      <% @book_comments.each do |comment| %>
+      <% @comments.each do |comment| %>
       <tr>
-        <td><%= l comment[:created_at] %></td>
-        <% if comment[:user_name].empty? %>
-          <td><%= comment[:email] %></td>
+        <td><%= l comment[1] %></td>
+        <% if comment[2] == '' %>
+          <td><%= comment[4] %></td>
         <% else %>
-          <td><%= comment[:user_name] %></td>
+          <td><%= comment[2] %></td>
         <% end %>
-        <td><%= comment[:comment_content] %></td>
-        <% if current_user.id == comment[:user_id] %>
-          <td><%= link_to t('views.common.edit'), polymorphic_path([:edit, @book, :comment], comment_content: comment[:comment_content], book_id: params[:id],id: comment[:id]) %></td>
-          <td><%= link_to t('views.common.destroy'), polymorphic_path([@book, :comment], book_id: params[:id],id: comment[:id]), method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
+        <td><%= comment[0] %></td>
+        <% if current_user.id == comment[3] %>
+          <td><%= link_to t('views.common.edit'), polymorphic_path([:edit, @book, :comment], comment) %></td>
+          <td><%= link_to t('views.common.destroy'), polymorphic_path([@book, :comment], comment), method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
         <% end %>
       </tr>
       <% end %>
