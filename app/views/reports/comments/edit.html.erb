@@ -1,10 +1,1 @@
-<%= form_with(model: [@report, @comment], local: true) do |form| %>
-  <div class="field">
-    <%= form.label :comment_content %>
-    <%= form.text_area :comment_content, size: '50x5', required: true %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<%= render partial: 'shared/commentfield', locals: { load_model: @report, comment: @comment } %>

@@ -25,17 +25,7 @@
 
 <p><strong><%= Comment.model_name.human %></strong></p>
 
-<%= form_with(model: [@book, @comment], local: true) do |form| %>
-  <div class="field">
-    <%= form.label :comment_content %>
-    <%= form.hidden_field :commentable_type, value: @comment[:commentable_type] %>
-    <%= form.text_area :comment_content, size: '50x5', required: true %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<%= render partial: 'shared/commentfield', locals: { load_model: @book, comment: @comment } %>
 
 <table>
   <thead>
