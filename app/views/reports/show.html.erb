@@ -48,14 +48,14 @@
     <% else %>
       <% @comments.each do |comment| %>
       <tr>
-        <td><%= l comment[:created_at] %></td>
-        <% if comment[:name] == '' %>
-          <td><%= comment[:email] %></td>
+        <td><%= l comment.created_at %></td>
+        <% if comment.user.name == '' %>
+          <td><%= comment.user.email %></td>
         <% else %>
-          <td><%= comment[:name] %></td>
+          <td><%= comment.user.name %></td>
         <% end %>
-        <td><%= comment[:comment_content] %></td>
-        <% if current_user.id == comment[:user_id] %>
+        <td><%= comment.comment_content %></td>
+        <% if current_user.id == comment.user_id %>
           <td><%= link_to t('views.common.edit'), polymorphic_path([:edit, @report, comment]) %></td>
           <td><%= link_to t('views.common.destroy'), polymorphic_path([@report, comment]), method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
         <% end %>
