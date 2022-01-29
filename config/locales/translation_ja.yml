@@ -22,6 +22,7 @@ ja:
         title: タイトル
         study_date: 学習日
         report_content: 内容
+        prohibited_saved: このレポートの保存は禁止です。
       comment:
         comment_content: コメント記入欄
         created_at: 投稿日時
