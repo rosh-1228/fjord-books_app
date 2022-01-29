@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'time'
-
 class ReportsController < ApplicationController
   include CommonModule
   before_action :set_report, only: %i[show edit update destroy]
