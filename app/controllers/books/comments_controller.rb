@@ -6,7 +6,8 @@ class Books::CommentsController < ApplicationController
 
   def create
     respond_to do |format|
-      if @book.comments.create(comment_params).valid?
+      comment = @book.comments.create(comment_params)
+      if comment.save
         format.html { redirect_to book_path(params[:book_id]), notice: t('controllers.common.notice_create', name: Comment.model_name.human) }
       else
         format.html { redirect_to book_path(params[:book_id]), alert: 'コメントを登録できませんでした。' }
