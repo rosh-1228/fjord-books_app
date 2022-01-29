@@ -6,7 +6,9 @@ class Reports::CommentsController < ApplicationController
 
   def create
     respond_to do |format|
-      if @report.comments.create(comment_params).valid?
+      comment = @report.comments.create(comment_params)
+      comment[:user_id] = current_user[:id]
+      if comment.save
         format.html { redirect_to report_path(params[:report_id]), notice: t('controllers.common.notice_create', name: Comment.model_name.human) }
       else
         format.html { redirect_to report_path(params[:report_id]), alert: 'コメントを登録できませんでした。' }
@@ -42,6 +44,6 @@ class Reports::CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:comment_content, :commentable_type).merge(user_id: current_user.id)
+    params.require(:comment).permit(:comment_content, :commentable_type)
   end
 end

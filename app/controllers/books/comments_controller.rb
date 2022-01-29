@@ -7,6 +7,7 @@ class Books::CommentsController < ApplicationController
   def create
     respond_to do |format|
       comment = @book.comments.create(comment_params)
+      comment[:user_id] = current_user[:id]
       if comment.save
         format.html { redirect_to book_path(params[:book_id]), notice: t('controllers.common.notice_create', name: Comment.model_name.human) }
       else
@@ -43,6 +44,6 @@ class Books::CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:comment_content, :commentable_type).merge(user_id: current_user.id)
+    params.require(:comment).permit(:comment_content, :commentable_type)
   end
 end
