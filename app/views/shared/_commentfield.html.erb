@@ -1,4 +1,4 @@
-<%= form_with(model: [load_model, comment], local: true) do |form| %>
+<%= form_with(model: [load_model, comment]) do |form| %>
   <div class="field">
     <%= form.label :comment_content %>
     <%= form.text_area :comment_content, size: '50x5', required: true %>

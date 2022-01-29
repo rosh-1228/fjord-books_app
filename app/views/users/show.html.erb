@@ -39,11 +39,11 @@
 </ul>
 
 <% if current_user.following?(@user) %>
-  <%= form_with(url: user_relationships_path(@user), method: :delete, local: true) do |f| %>
+  <%= form_with(url: user_relationships_path(@user), method: :delete) do |f| %>
     <%= f.submit t('.destroy') %>
   <% end %>
 <% elsif current_user != @user %>
-  <%= form_with(url: user_relationships_path(@user), local: true) do |f| %>
+  <%= form_with(url: user_relationships_path(@user)) do |f| %>
     <%= f.submit t('.create') %>
   <% end %>
 <% end %>
