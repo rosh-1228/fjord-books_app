@@ -49,7 +49,7 @@
 
   <tbody>
     <% if @comments.empty? %>
-      <p>コメントはありません。</p>
+      <%= Comment.human_attribute_name(:no_comment) %>
     <% else %>
       <% @comments.each do |comment| %>
       <tr>

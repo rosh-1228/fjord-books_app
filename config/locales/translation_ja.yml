@@ -27,3 +27,4 @@ ja:
         created_at: 投稿日時
         contributor: 投稿者
         comment: コメント
+        no_comment: コメントはありません。
