@@ -14,10 +14,7 @@ class Reports::CommentsController < ApplicationController
     end
   end
 
-  def edit
-    set_report
-    set_comment
-  end
+  def edit; end
 
   def update
     respond_to do |format|
@@ -30,7 +27,7 @@ class Reports::CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.destroy
+    @comment.destroy!
     redirect_to report_path(params[:report_id]), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 

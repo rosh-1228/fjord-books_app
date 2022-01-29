@@ -15,10 +15,7 @@ class Books::CommentsController < ApplicationController
     end
   end
 
-  def edit
-    set_book
-    set_comment
-  end
+  def edit; end
 
   def update
     respond_to do |format|
@@ -31,7 +28,7 @@ class Books::CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.destroy
+    @comment.destroy!
     redirect_to book_path(params[:book_id]), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
