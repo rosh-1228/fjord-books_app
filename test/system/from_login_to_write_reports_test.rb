@@ -1,12 +1,8 @@
-require "application_system_test_case"
+# frozen_string_literal: true
+
+require 'application_system_test_case'
 
 class FromLoginToWriteReportsTest < ApplicationSystemTestCase
-  # test "visiting the index" do
-  #   visit from_login_to_write_reports_url
-  #
-  #   assert_selector "h1", text: "FromLoginToWriteReport"
-  # end
-
   setup do
     @user = create(:test_user)
     create(:test_report, user_id: @user.id)
@@ -20,7 +16,7 @@ class FromLoginToWriteReportsTest < ApplicationSystemTestCase
   test 'login user' do
     visit books_url
 
-    assert_selector "h1", text: '本'
+    assert_selector 'h1', text: '本'
   end
 
   test 'create report' do
@@ -35,7 +31,7 @@ class FromLoginToWriteReportsTest < ApplicationSystemTestCase
 
   test 'update report' do
     visit reports_url
-    
+
     report = Report.find(1)
     click_on '編集'
 

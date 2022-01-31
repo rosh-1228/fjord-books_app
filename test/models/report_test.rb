@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require 'test_helper'
 
 class ReportTest < ActiveSupport::TestCase
-
   setup do
     @user = create(:test_user)
     @other_user = create(:test_other_user)
@@ -20,12 +19,11 @@ class ReportTest < ActiveSupport::TestCase
     assert @report.editable?(@user)
   end
 
-
   test 'is edited report not real user?' do
     assert_not @report.editable?(@other_user)
   end
 
   test 'report date change %Y%M%D' do
-    assert_match Date.today.to_s, @report.created_on.to_s
+    assert_match Time.zone.today.to_s, @report.created_on.to_s
   end
 end
