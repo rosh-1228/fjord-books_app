@@ -23,7 +23,7 @@ class ReportTest < ActiveSupport::TestCase
     assert_not @report.editable?(@other_user)
   end
 
-  test 'report date change %Y%M%D' do
-    assert_match Time.zone.today.to_s, @report.created_on.to_s
+  test 'report date change (%a, %d %b %Y)' do
+    assert /(?:(Sun)|(Mon)|(Tue)|(Wed)|(Thu)|(Fri)|(Sat)),\s(0[1-9]|[12][0-9]|3[01])\s(?:(Jan)|(Feb)|(Mar)|(Apr)|(May)|(Jun)|(Jul)|(Aug)|(Sep)|(Oct)|(Nov)|(Dec)|)\s[0-9]{4}/.match(@report.created_on.strftime('%a, %d %b %Y'))
   end
 end
