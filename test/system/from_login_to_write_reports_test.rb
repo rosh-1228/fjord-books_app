@@ -38,8 +38,11 @@ class FromLoginToWriteReportsTest < ApplicationSystemTestCase
     fill_in 'report_title', with: '編集後 日報タイトル 編集後'
     fill_in 'report_content', with: '編集後 編集内容 編集後'
     click_on '更新する'
+
     edited_report = Report.find(1)
 
+    assert_text '編集後 日報タイトル 編集後'
+    assert_text '編集後 編集内容 編集後'
     assert_not_equal(report.title, edited_report.title)
     assert_not_equal(report.content, edited_report.content)
   end
