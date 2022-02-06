@@ -7,6 +7,8 @@ class UserTest < ActiveSupport::TestCase
     @user = create(:test_user)
     @other_user = create(:test_other_user)
     @return_name_user = create(:test_name_user)
+    @follow = @user.follow(@other_user)
+    @followed_user = @other_user.follow(@user)
   end
 
   test 'can follow other user' do
@@ -14,12 +16,10 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'can confirm following user' do
-    @user.follow(@other_user)
     assert @user.following?(@other_user)
   end
 
   test 'can confirm follower' do
-    @other_user.follow(@user)
     assert @user.followed_by?(@other_user)
   end
 
