@@ -26,4 +26,11 @@ class ReportTest < ActiveSupport::TestCase
   test 'report date change (%a, %d %b %Y)' do
     assert /(?:(Sun)|(Mon)|(Tue)|(Wed)|(Thu)|(Fri)|(Sat)),\s(0[1-9]|[12][0-9]|3[01])\s(?:(Jan)|(Feb)|(Mar)|(Apr)|(May)|(Jun)|(Jul)|(Aug)|(Sep)|(Oct)|(Nov)|(Dec)|)\s[0-9]{4}/.match(@report.created_on.strftime('%a, %d %b %Y'))
   end
+
+  test 'report was created is today' do
+    travel_to(Date.new(2022, 1, 1)) do
+      report = create(:test_report, user_id: @user.id)
+      assert_equal Date.new(2022, 1, 1), report.created_on
+    end
+  end
 end
