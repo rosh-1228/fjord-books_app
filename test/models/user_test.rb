@@ -7,9 +7,7 @@ class UserTest < ActiveSupport::TestCase
     @user = create(:test_user)
     @other_user = create(:test_other_user)
     @return_name_user = create(:test_name_user)
-    @user.follow(@other_user)
-    @user_follow_id = @user.followings.find(@other_user.id).id
-    @other_user.follow(@user)
+    @user_follow_id = create(:test_relationship).following_id
   end
 
   test 'can follow other user' do
@@ -23,11 +21,13 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'can confirm follower' do
+    create(:test_other_relationship)
     assert @user.followed_by?(@other_user)
   end
 
   test 'can unfollow following user' do
     @user.unfollow(@other_user)
+    assert_not Relationship.exists?(following_id: 2)
   end
 
   test 'return email when no name' do
