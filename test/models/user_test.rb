@@ -7,16 +7,15 @@ class UserTest < ActiveSupport::TestCase
     @user = create(:test_user)
     @other_user = create(:test_other_user)
     @return_name_user = create(:test_name_user)
-    @user_follow_id = create(:test_relationship).following_id
   end
 
   test 'can follow other user' do
-    following_id = Relationship.find_by(following_id: @other_user.id).following_id
-
-    assert_equal following_id, @user_follow_id
+    @user.follow(@other_user)
+    assert Relationship.exists?(following_id: 2)
   end
 
   test 'can confirm following user' do
+    create(:test_relationship).following_id
     assert @user.following?(@other_user)
   end
 
