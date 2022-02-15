@@ -1,4 +1,12 @@
 <div class="field">
+  <%= f.label :avatar %>
+  <% if @user.avatar.attached? && @user.avatar.attachment.blob.present? && @user.avatar.attachment.blob.persisted? %>
+    <%= image_tag @user.avatar.variant(resize: "30^", gravity: "Center", crop: "30x30+0+0", auto_orient: true) %><br/>
+  <% end %>
+  <%= f.file_field :avatar %>
+</div>
+
+<div class="field">
   <%= f.label :name %>
   <%= f.text_field :name %>
 </div>
