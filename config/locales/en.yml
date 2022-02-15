@@ -30,4 +30,26 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  booksapp: Books App
+  dictionary:
+    messages:
+      successfully_created: "%{name_param} was successfully created."
+      successfully_updated: "%{name_param} was successfully updated."
+      successfully_deleted: "%{name_param} was successfully destroyed."
+  activerecord:
+    models: 
+      book: book
+    attributes:
+      book:
+        books: Books
+        title: Title
+        memo: Memo
+        author: Author
+        picture: Picture
+        newbook: New Book
+        show: Show
+        edit: Edit
+        destroy: Delete
+        editingbook: Editing Book
+        back: Back
+        sure?: Are you sure？
