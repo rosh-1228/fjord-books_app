@@ -1,0 +1,56 @@
+<h1><%= t('views.common.title_show', name: Report.model_name.human) %></h1>
+
+<p>
+  <strong><%= Report.human_attribute_name(:title) %>:</strong>
+  <%= @report.title %>
+</p>
+
+<p>
+  <strong><%= Report.human_attribute_name(:study_date) %>:</strong>
+  <%= @report.created_at.strftime("%F") %>
+</p>
+
+<p>
+  <strong><%= Report.human_attribute_name(:report_content) %>:</strong>
+  <%= @report.report_content %>
+</p>
+
+<%= link_to t('views.common.edit'), edit_report_path(@report) %> |
+<%= link_to t('views.common.back'), reports_path %>
+
+<p><strong><%= Comment.model_name.human %></strong></p>
+
+<%= render partial: 'shared/commentfield', locals: { load_model: @report, comment: @comment } %>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= Comment.human_attribute_name(:created_at) %></th>
+      <th><%= Comment.human_attribute_name(:contributor) %></th>
+      <th><%= Comment.human_attribute_name(:comment) %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @comments.empty? %>
+      <%= Comment.human_attribute_name(:no_comment) %>
+    <% else %>
+      <% @comments.each do |comment| %>
+      <tr>
+        <td><%= l comment.created_at %></td>
+        <% if comment.user.name == '' %>
+          <td><%= comment.user.email %></td>
+        <% else %>
+          <td><%= comment.user.name %></td>
+        <% end %>
+        <td><%= comment.comment_content %></td>
+        <% if current_user.id == comment.user_id %>
+          <td><%= link_to t('views.common.edit'), polymorphic_path([:edit, @report, comment]) %></td>
+          <td><%= link_to t('views.common.destroy'), polymorphic_path([@report, comment]), method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
+        <% end %>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

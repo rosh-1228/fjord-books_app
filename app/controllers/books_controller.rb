@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class BooksController < ApplicationController
+  include CommonModule
   before_action :set_book, only: %i[show edit update destroy]
 
   # GET /books
@@ -11,7 +12,10 @@ class BooksController < ApplicationController
 
   # GET /books/1
   # GET /books/1.json
-  def show; end
+  def show
+    load_comments(params)
+    @comment = Comment.new
+  end
 
   # GET /books/new
   def new
