@@ -1,0 +1,11 @@
+<% provide(:title, @user.email) %>
+<h1><%= User.human_attribute_name(:userinfo) %> (<%= @user.email %>)</h1>
+
+<ul class="users">
+  <li>
+    <%= @user.email %>
+    <%= @user.post_no %>
+    <%= @user.address %>
+    <%= @user.introduction %>
+  </li>
+</ul>
