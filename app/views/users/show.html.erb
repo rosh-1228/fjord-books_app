@@ -1,5 +1,22 @@
 <h1><%= t('views.common.title_show', name: User.model_name.human) %></h1>
 
+<div class="stats">
+  <a href="<%= followings_user_path(@user) %>">
+    <strong id="following" class="stat">
+      <%= @user.followeds.count %>
+    </strong>
+    <%= FollowRelationship.human_attribute_name(:following) %>
+  </a>
+  <a href="<%= followers_user_path(@user) %>">
+    <strong id="followed" class="stat">
+      <%= @user.followings.count %>
+    </strong>
+    <%= FollowRelationship.human_attribute_name(:followers) %>
+  </a>
+</div>
+
+<%= render 'users/follow_form' %>
+
 <p>
   <strong><%= User.human_attribute_name(:email) %>:</strong>
   <%= @user.email %>
